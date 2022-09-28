@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "813302972394",
-    "firebase_url": "https://rentarepair-b1f2d-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "rentarepair-b1f2d",
-    "storage_bucket": "rentarepair-b1f2d.appspot.com"
+    "project_number": "786593721424",
+    "project_id": "sample-app-39c56",
+    "storage_bucket": "sample-app-39c56.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:813302972394:android:a3887d3f52c4ea5ed07c93",
+        "mobilesdk_app_id": "1:786593721424:android:167d69fdf338a4c28eb555",
         "android_client_info": {
-          "package_name": "com.protest.rentarepair"
+          "package_name": "com.sample.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "813302972394-l6vn0eoannqqikbob1dsj8tohucst2g9.apps.googleusercontent.com",
+          "client_id": "786593721424-pjne1q2nmv21m6jvptahl5htksp29psn.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB3WE1AGRo84rIE5HPnrNzu3L4-yVK06w0"
+          "current_key": "AIzaSyDCamixYGKTozs0ONdH_v3vFNgbaG1k4Dk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "813302972394-l6vn0eoannqqikbob1dsj8tohucst2g9.apps.googleusercontent.com",
+              "client_id": "786593721424-pjne1q2nmv21m6jvptahl5htksp29psn.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

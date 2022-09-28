@@ -1,40 +1,71 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
+    <ion-header :translucent="true" @click="sendPusher()">
       <ion-toolbar>
         <ion-title>Blank</ion-title>
       </ion-toolbar>
     </ion-header>
     
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-      </ion-header>
+     
+      
     
       <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        <ion-button class="test" @click="sendNotif">Send Notif</ion-button>
+
       </div>
     </ion-content>
   </ion-page>
 </template>
 
-<script lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-import { defineComponent } from 'vue';
+<script>
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/vue';
+import {LocalNotifications} from '@capacitor/local-notifications';
 
-export default defineComponent({
+
+
+const value = ({
   name: 'HomePage',
   components: {
     IonContent,
     IonHeader,
     IonPage,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    IonButton
+  },
+  data(){
+    return {
+      counter: 0,
+      opt: null
+    };
+  },  
+  async mounted(){
+      this.opt = {notifications:[{
+            id: new Date().getTime(),
+            channelId: 'test', // If you are using channels
+            title: 'My Title',
+            body: 'My body'
+        }]}
+
+      LocalNotifications.createChannel({
+        id: 'test',
+        name: 'Reminders',
+        description: 'Reminders you set within App',
+        importance: 4
+      })
+  },
+  methods:{
+    sendNotif(){
+        setTimeout(()=>{
+          LocalNotifications.schedule(this.opt);
+        },5000);
+    }
+    
   }
 });
+
+export default value;
 </script>
 
 <style scoped>
