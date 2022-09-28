@@ -24,6 +24,7 @@ import {LocalNotifications} from '@capacitor/local-notifications';
 
 
 
+
 const value = ({
   name: 'HomePage',
   components: {
@@ -37,26 +38,33 @@ const value = ({
   data(){
     return {
       counter: 0,
-      opt: null
+      opt: null,
+      granted: false
     };
   },  
   async mounted(){
-      this.opt = {notifications:[{
+      LocalNotifications.requestPermissions().then(permission=>{
+        if(permission.display != 'granted') return;
+        this.granted = true;
+        this.opt = {notifications:[{
             id: new Date().getTime(),
             channelId: 'test', // If you are using channels
             title: 'My Title',
             body: 'My body'
         }]}
 
-      LocalNotifications.createChannel({
-        id: 'test',
-        name: 'Reminders',
-        description: 'Reminders you set within App',
-        importance: 4
-      })
+        LocalNotifications.createChannel({
+          id: 'test',
+          name: 'Reminders',
+          description: 'Reminders you set within App',
+          importance: 4
+        })
+      });
+      
   },
   methods:{
     sendNotif(){
+        if(!this.granted){ alert('Notif permission not granted!'); return;}
         setTimeout(()=>{
           LocalNotifications.schedule(this.opt);
         },5000);
